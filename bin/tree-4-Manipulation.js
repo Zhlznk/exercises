@@ -18,11 +18,11 @@ const compressImages = (oldTree) => {
   const children = getChildren(oldTree);
   const newChildren = children.map((child) => {
     const childMeta = _.cloneDeep(getMeta(child));
-    if (isFile(child)) {
-      if (child.name.slice(-4) === '.jpg') child.meta.size /= 2;
-      return mkfile(getName(child), _.cloneDeep(getMeta(child)));
+    if (!isFile(child) || child.name.slice(-4) !== '.jpg') {
+      return mkdir(getName(child), getChildren(child), childMeta);
     }
-    return mkdir(getName(child), getChildren(child), childMeta);
+    child.meta.size /= 2;
+    return mkfile(getName(child), _.cloneDeep(getMeta(child)));
   });
   return mkdir(getName(oldTree), newChildren, getMeta(oldTree));
 };

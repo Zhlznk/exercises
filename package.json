@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/Zhlznk/exercises#readme",
   "bin": {
-    "tree4": "bin/tree-4-Manipulation.js"
+    "tree4": "bin/tree-4-Manipulation.js",
+    "tree5": "bin/tree-5-Traversal.js"
   },
   "dependencies": {
     "@hexlet/immutable-fs-trees": "^0.7.0",
