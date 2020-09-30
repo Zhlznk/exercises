@@ -1,0 +1,23 @@
+{
+  "name": "exercises",
+  "version": "1.0.0",
+  "description": "This repository was created for solbing the exercises.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zhlznk/exercises.git"
+  },
+  "author": "Zheleznyak Andrey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zhlznk/exercises/issues"
+  },
+  "homepage": "https://github.com/Zhlznk/exercises#readme",
+  "bin": {
+    "tree4": "bin/tree-4-Manipulation.js"
+  }
+}
