@@ -19,5 +19,9 @@
   "homepage": "https://github.com/Zhlznk/exercises#readme",
   "bin": {
     "tree4": "bin/tree-4-Manipulation.js"
+  },
+  "dependencies": {
+    "@hexlet/immutable-fs-trees": "^0.7.0",
+    "lodash": "^4.17.20"
   }
 }
