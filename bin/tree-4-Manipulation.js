@@ -6,32 +6,27 @@ import {
 } from '@hexlet/immutable-fs-trees';
 
 const tree = mkdir('my documents', [
+  mkdir('documents.jpg'),
   mkfile('avatar.jpg', { size: 100 }),
   mkfile('passport.jpg', { size: 200 }),
   mkfile('family.jpg', { size: 150 }),
   mkfile('addresses', { size: 125 }),
-  mkdir('presentations')
-  ]);
+  mkdir('presentations'),
+], { test: 'haha' });
 
 const compressImages = (oldTree) => {
-  const name = getName(oldTree);
-  const meta = _.cloneDeep(getMeta(oldTree));
   const children = getChildren(oldTree);
   const newChildren = children.map((child) => {
-    const nameChild = getName(child);
-    const metaChild = _.cloneDeep(getMeta(child));
-    if(isFile(child)) {
-      child.meta.size = child.meta.size / 2;
-      return mkfile(nameChild, _.cloneDeep(getMeta(child)));
+    const childMeta = _.cloneDeep(getMeta(child));
+    if (isFile(child)) {
+      if (child.name.slice(-4) === '.jpg') child.meta.size /= 2;
+      return mkfile(getName(child), _.cloneDeep(getMeta(child)));
     }
-    return mkdir(nameChild, getChildren(child),metaChild);
+    return mkdir(getName(child), getChildren(child), childMeta);
   });
-
-  const newTree = mkdir(name, newChildren, meta)
-
-  return newTree;
+  return mkdir(getName(oldTree), newChildren, getMeta(oldTree));
 };
 
- console.log(JSON.stringify(compressImages(tree), null, ' '));
+console.log(JSON.stringify(compressImages(tree), null, ' '));
 
 // console.log(getChildren(tree));
